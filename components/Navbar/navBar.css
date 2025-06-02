@@ -1,0 +1,113 @@
+/* ─────────────  NAVBAR BASE  ───────────── */
+.header-container {
+  background-color: transparent !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-container.sticky {
+  /* darkHero – Charcoal  */
+  background-color: #0047ff !important;
+}
+
+.header-container .row-qh {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkswraper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.linkswraper li {
+  height: max-content;
+  list-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+.linkswraper li::marker {
+  display: none;
+  content: "";
+}
+
+/* ⬇︎ Links desktop */
+.nav-link {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: #ffffff; /* texto blanco sobre hero oscuro */
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.5s;
+  white-space: nowrap;
+}
+
+/* Color de iconos desktop */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-icons .icon {
+  color: #ffffff;
+}
+
+/* ─────────────  DESKTOP  ───────────── */
+@media only screen and (min-width: 768px) {
+  .toggle-icon {
+    display: none;
+  }
+}
+
+/* ─────────────  MOBILE  (< 650 px)  ───────────── */
+@media (max-width: 650px) {
+  /* header-logo y toggle */
+  .header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff !important;
+    width: 100%;
+  }
+
+  /* menú desplegable */
+  .linkswraper {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: #ffffff; /* fondo claro */
+    width: 0;
+    padding: 0;
+    transition: all ease-in 0.5s;
+    visibility: hidden;
+    overflow: hidden;
+  }
+
+  .linkswraper.active {
+    visibility: visible;
+    display: flex !important;
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  /* Links mobile */
+  .linkswraper .nav-link {
+    color: #2e2e32; /* textMain – gris oscuro */
+    padding: 20px 0 !important;
+  }
+
+  .header-icons {
+    display: none !important;
+  }
+}

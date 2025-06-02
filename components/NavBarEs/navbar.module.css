@@ -1,0 +1,113 @@
+/* =====  NAVBAR  ===== */
+
+/* ----------  Desktop / default  ---------- */
+.header-container {
+  position: fixed;
+  inset: 0 0 auto 0; /* top-0 left-0 right-0 */
+  padding: 8px 0;
+  z-index: 1000;
+  background: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-container.sticky {
+  background: #000; /* negro sólido al hacer scroll   */
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.25);
+}
+
+/* layout interno */
+.row-qh,
+.header-logo,
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+.row-qh {
+  justify-content: space-between;
+  width: 100%;
+}
+.header-icons {
+  gap: 20px;
+}
+
+.linkswraper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.linkswraper li {
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffd140;
+} /* dorado al pasar el cursor */
+
+/* Oculta el icono menú en desktop */
+@media (min-width: 768px) {
+  .toggle-icon {
+    display: none;
+  }
+}
+
+/* ----------  Mobile  (<650 px) ---------- */
+@media (max-width: 650px) {
+  .header-container {
+    padding: 10px 20px;
+  }
+
+  /* logo + hamburger en la misma fila */
+  .header-logo {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* panel lateral (hamburguesa) */
+  .linkswraper {
+    position: fixed;
+    top: 60px; /* debajo del header */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #000; /* ⬅️⬅️  NEGRO  */
+    visibility: hidden;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.35s ease;
+  }
+
+  .linkswraper.active {
+    visibility: visible;
+    width: 100%;
+    padding: 16px 0;
+  }
+
+  .linkswraper li {
+    width: 100%;
+  }
+
+  .linkswraper .nav-link {
+    color: #fff; /* ⬅️⬅️  BLANCO  */
+    padding: 18px 24px;
+    width: 100%;
+  }
+
+  /* Íconos sociales opcionalmente ocultos */
+  .header-icons {
+    display: none;
+  }
+}
