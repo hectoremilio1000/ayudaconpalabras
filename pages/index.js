@@ -117,14 +117,34 @@ export default function Home() {
           name="description"
           content="En menos de 50 s ayudas a que un niño aprenda 20 palabras nuevas. Dona desde $1 USD al completar el reto."
         />
-        {/* OG + Twitter */}
+
+        {/* --- Open Graph (Facebook / WhatsApp) --- */}
         <meta property="og:title" content="Suma Con Palabras" />
         <meta
           property="og:description"
           content="Micro-donaciones para enseñar a leer a niñas y niños de zonas rurales."
         />
+        <meta
+          property="og:url"
+          content="https://ayudaconpalabras.vercel.app/"
+        />
         <meta property="og:type" content="website" />
+
+        {/* imagen que quieres que aparezca */}
+        <meta
+          property="og:image"
+          content="https://ayudaconpalabras.vercel.app/img/logo-sumaconpalabras2.png"
+        />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="314" />
+        <meta property="og:image:alt" content="Logotipo Suma Con Palabras" />
+
+        {/* --- Twitter --- */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content="https://ayudaconpalabras.vercel.app/img/logo-sumaconpalabras2.png"
+        />
       </Head>
 
       <NavBar />
