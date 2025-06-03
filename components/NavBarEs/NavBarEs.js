@@ -2,127 +2,98 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../../data/imagenes/logo.png";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { FaAlignRight, FaHandHoldingHeart } from "react-icons/fa";
 
-// Icons
-import { FaAlignRight, FaMobileAlt, FaVideo, FaUser } from "react-icons/fa";
-import { useRouter } from "next/navigation";
-import { useAppContext } from "../context/Context";
-
-// Flags (por si los sigues usando posteriormente)
-const usFlag =
-  "https://imagenesrutalab.s3.amazonaws.com/llorona/nextImage/banderas/um.svg";
-const mxFlag =
-  "https://imagenesrutalab.s3.amazonaws.com/llorona/nextImage/banderas/mx.svg";
+// Nuevo logo (SVG o PNG en /public/img)
+import logo from "/public/img/logo-sumaconpalabras2.png";
 
 function NavBar() {
-  const [linkswraper, setLinkswraper] = useState(false);
-  const [navbar, setNavbar] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const { espa, onIdiomaIngles, onIdiomaEspa } = useAppContext();
-
-  // Cambia bg cuando se hace scroll
-  const changeBackground = () => {
-    if (typeof window !== "undefined") {
-      setNavbar(window.scrollY >= 80);
-    }
-  };
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", changeBackground);
-  }
-
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
 
+  // Cambia bg al hacer scroll
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /** Donación flash desde la barra. */
+  const handleDonate = async () => {
+    try {
+      await axios.post(`${apiUrl}/donate`, { amount: 1 });
+      alert("¡Gracias por tu donación! 🎉");
+    } catch (e) {
+      console.error(e);
+      alert("Ups, algo salió mal 😢");
+    }
+  };
+
   return (
-    <header className={navbar ? "header-container sticky" : "header-container"}>
-      <div className="max-w-[1184px] w-full mx-auto px-4 md:px-6 py-4 md:mt-2 mt-6 flex items-center justify-between flex-wrap font-sans">
-        {/* ---------- LOGO + TOGGLE ---------- */}
-        <div className="header-logo flex items-center gap-4">
-          <Link href="/" className="flex items-center">
-            <Image
-              src={logo}
-              alt="Certify logo"
-              priority
-              className="w-20 md:w-36 lg:w-40 h-auto"
-            />
-          </Link>
-          <FaAlignRight
-            className="toggle-icon cursor-pointer text-white text-2xl md:hidden"
-            onClick={() => setLinkswraper(!linkswraper)}
+    <header
+      className={`w-full fixed top-0 z-50 transition-colors ${
+        scrolled ? "bg-darkHero/95 shadow-lg" : "bg-transparent"
+      }`}
+    >
+      <nav className="max-w-[1184px] mx-auto flex items-center justify-between py-4 px-4 md:px-6">
+        {/* ---------- Logo & Toggle ---------- */}
+
+        <Link href="/" className="order-1 md:order-none">
+          <Image
+            src={logo}
+            alt="Suma Con Palabras logo"
+            priority
+            className="w-32 md:w-40 h-auto"
           />
-        </div>
+        </Link>
 
-        {/* ---------- LINKS ---------- */}
-        <ul
-          onClick={() => setLinkswraper(false)}
-          className={`linkswraper ${linkswraper ? "active bg-darkHero" : ""}`}
+        {/* Ícono hamburguesa – sólo visible en móvil */}
+        <button
+          className="order-2 md:hidden text-white text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {espa ? (
-            <>
-              {/* WEB */}
-              <li>
-                <Link
-                  href="/web"
-                  className="px-3 py-2 rounded-full flex items-center justify-center gap-0 md:gap-3 text-primary md:text-white md:border-2 md:border-white hover:bg-primary/10 md:hover:bg-white/10"
-                >
-                  <FaVideo className="hidden md:block" />
-                  <span className="font-bold md:font-normal">WEB</span>
-                </Link>
-              </li>
+          <FaAlignRight />
+        </button>
 
-              {/* APP */}
-              <li>
-                <Link
-                  href="/app"
-                  className="px-3 py-2 rounded-full flex items-center justify-center gap-0 md:gap-3 text-primary md:text-white md:border-2 md:border-white hover:bg-primary/10 md:hover:bg-white/10"
-                >
-                  <FaMobileAlt className="hidden md:block" />
-                  <span className="font-bold md:font-normal">APP</span>
-                </Link>
-              </li>
-
-              {/* LOGIN */}
-              <li>
-                <Link
-                  href="/login"
-                  className="px-3 py-2 rounded-full flex items-center justify-center gap-0 md:gap-3 text-primary font-bold md:text-white md:font-normal md:bg-primary md:border-white hover:bg-primaryLt/80"
-                >
-                  <FaUser className="hidden md:block" />
-                  <span className="font-bold md:font-normal">LOGIN</span>
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              {/* Aquí tu versión en inglés o lo que necesites */}
-              <li>
-                <Link
-                  href="/pricing"
-                  className="px-3 py-2 nav-link text-primary hover:text-primaryLt"
-                >
-                  PRICING
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/fast-certification"
-                  className="px-3 py-2 rounded-full bg-cta text-darkHero font-bold hover:bg-cta/80"
-                >
-                  FAST CERTIFICATION
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="px-3 py-2 nav-link text-primary hover:text-primaryLt"
-                >
-                  SIGN IN
-                </Link>
-              </li>
-            </>
-          )}
+        {/* ---------- Links ---------- */}
+        <ul
+          className={`md:flex items-center gap-6 font-medium ${
+            menuOpen
+              ? "absolute top-full left-0 w-full bg-darkHero/95 py-6 flex flex-col"
+              : "hidden"
+          } md:static md:bg-transparent`}
+          onClick={() => setMenuOpen(false)}
+        >
+          <li>
+            <Link
+              href="/comofunciona"
+              className="text-white hover:text-primaryLt"
+            >
+              ¿Cómo funciona?
+            </Link>
+          </li>
+          <li>
+            <Link href="/descargar" className="text-white hover:text-primaryLt">
+              Descargar
+            </Link>
+          </li>
+          <li>
+            <Link href="/donar">
+              <button
+                onClick={handleDonate}
+                className="flex items-center gap-2 bg-cta text-darkHero font-bold px-4 py-2 rounded-full hover:bg-cta/80"
+              >
+                <FaHandHoldingHeart /> Donar $5
+              </button>
+            </Link>
+          </li>
         </ul>
-      </div>
+      </nav>
     </header>
   );
 }

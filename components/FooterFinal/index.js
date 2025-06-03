@@ -9,50 +9,40 @@ function FooterFinal() {
   return (
     <>
       {espa ? (
-        <footer className="bg-primary py-12">
+        <footer className="bg-darkHero py-12">
           <div className="max-w-screen-lg mx-auto px-2 sm:px-2 lg:px-8">
             <nav
               className="-my-2 flex flex-wrap justify-center"
               style={{ width: "100%" }}
             >
-              {/* <div className=" py-2">
-                <Link
-                  href="/precios"
-                  className="nav-link hover:text-yellow-400"
-                >
-                  PRECIOS
-                </Link>
-              </div> */}
-              {/* <div className=" py-2">
-                <Link
-                  href="/precios"
-                  className="nav-link hover:text-yellow-400"
-                >
-                  CERTIFICACIÓN EXPRESS
-                </Link>
-              </div> */}
-
               <div className="py-2">
-                <Link href="/web" className="nav-link hover:text-primaryLt">
-                  WEB
+                <Link
+                  href="/comofunciona"
+                  className="nav-link hover:text-primaryLt"
+                >
+                  ¿Cómo funciona?
                 </Link>
               </div>
 
               <div className="px-5 py-2">
-                <Link href="/app" className="nav-link hover:text-primaryLt">
-                  APP
+                <Link
+                  href="/descargar"
+                  className="nav-link hover:text-primaryLt"
+                >
+                  Descargar
                 </Link>
               </div>
               <div className="py-2">
-                <Link href="/login" className="nav-link hover:text-primaryLt">
-                  LOGIN
+                <Link href="/donar" className="nav-link hover:text-primaryLt">
+                  Donar $5
                 </Link>
               </div>
             </nav>
           </div>
           <div className="pt-3">
             <p className="text-white text-center text-xl">
-              CERTIFY Copyright 2024
+              © {new Date().getFullYear()} Suma Con Palabras — Cambiando vidas 1
+              minuto a la vez
             </p>
           </div>
         </footer>

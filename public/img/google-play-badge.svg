@@ -1,0 +1,17 @@
+<!-- google-play-badge.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="54" viewBox="0 0 180 54" role="img" aria-label="Disponible en Google Play">
+  <!-- FONDO -->
+  <rect width="180" height="54" rx="8" fill="#000000"></rect>
+  
+  <!-- ICONO TRIÁNGULO GOOGLE PLAY -->
+  <g transform="translate(12 9) scale(0.9)">
+    <polygon points="0,0 24,14 0,28" fill="#34A853"></polygon>
+    <polygon points="0,0 24,14 29,9" fill="#4285F4"></polygon>
+    <polygon points="0,28 24,14 29,19" fill="#FBBC04"></polygon>
+    <polygon points="24,14 29,9 29,19" fill="#EA4335"></polygon>
+  </g>
+
+  <!-- TEXTO -->
+  <text x="55" y="20" font-family="Roboto, Arial, sans-serif" font-size="10" fill="#FFFFFF">DISPONIBLE EN</text>
+  <text x="55" y="38" font-family="Roboto, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Google Play</text>
+</svg>

@@ -7,6 +7,7 @@ import * as fbq from "../lib/fpixel"; // si usas Facebook Pixel
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import axios from "axios";
+import CountUp from "react-countup";
 
 // Componentes que ya tienes
 import NavBar from "../components/NavBarEs/NavBarEs";
@@ -18,7 +19,9 @@ import WhatsappButton from "../components/WhatsappButton";
 import { InlineWidget } from "react-calendly";
 import { Button } from "antd";
 import { FaMobileAlt, FaVideo } from "react-icons/fa";
+import Image from "next/image";
 
+const wordsToday = 437840;
 // Carga perezosa (sin SSR) para el Swiper
 const MySwiper = dynamic(() => import("../components/SwiperPrueba"), {
   ssr: false,
@@ -107,180 +110,162 @@ export default function Home() {
   };
 
   return (
-    <div>
-      {/* HEAD con meta tags */}
-      {espa ? (
-        <Head>
-          <title>Certify | Certifica tu contenido</title>
-          <link rel="icon" href="/favicon.png" />
-          <meta
-            name="description"
-            content="Convierte cualquier imagen en una prueba legalmente sólida con Certify."
-          />
-
-          {/* Open Graph */}
-          <meta property="og:title" content="Certify" />
-          <meta
-            property="og:description"
-            content="Certifica tu contenido con fecha, hora y ubicación blindadas."
-          />
-          <meta
-            property="og:image"
-            content="https://certify-seven.vercel.app/og-certify.jpg"
-          />
-          <meta property="og:url" content="https://certify-seven.vercel.app/" />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="Certify" />
-
-          {/* Twitter Card */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Certify" />
-          <meta
-            name="twitter:description"
-            content="Certifica tu contenido con fecha, hora y ubicación blindadas."
-          />
-          <meta
-            name="twitter:image"
-            content="https://certify-seven.vercel.app/og-certify.jpg"
-          />
-        </Head>
-      ) : (
-        <Head>
-          <title>GrowthSuite | Custom Software Development</title>
-          <link rel="icon" href="../favicon.png" />
-          <meta
-            name="description"
-            content="We create custom software, mobile apps, and POS solutions for businesses."
-          />
-          <meta property="og:title" content="GrowthSuite" />
-          <meta
-            property="og:description"
-            content="We develop software solutions for businesses worldwide."
-          />
-          <meta property="og:url" content="https://www.growthsuite.com/" />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:image"
-            content="https://imagenesrutalab.s3.amazonaws.com/impulsoRestaurantero/logo/logoSoloImpulsoRestaurantero.png"
-          />
-        </Head>
-      )}
+    <>
+      <Head>
+        <title>Suma Con Palabras — Regala 1 minuto, cambia una vida</title>
+        <meta
+          name="description"
+          content="En menos de 50 s ayudas a que un niño aprenda 20 palabras nuevas. Dona desde $1 USD al completar el reto."
+        />
+        {/* OG + Twitter */}
+        <meta property="og:title" content="Suma Con Palabras" />
+        <meta
+          property="og:description"
+          content="Micro-donaciones para enseñar a leer a niñas y niños de zonas rurales."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
 
       <NavBar />
 
+      {/* HERO */}
+
+      {/* Carrusel */}
       <MySwiper />
-
-      <div className="max-w-[1080px] mx-auto p-4 md:mt-[8vh]">
-        <h1 className="md:text-5xl text-4xl md:p-4 font-bold text-center">
-          Evidencia digital a un clic
-        </h1>
-      </div>
-
-      {/* detalles */}
-      <div className="max-w-[1080px] mx-auto p-8">
-        <p className="text-textMain font-medium mb-6">
-          Convierte cualquier imagen en una prueba legalmente sólida. Con
-          Certify blindas fecha, hora y ubicación sin complicaciones: elige si
-          lo haces desde la web o con la cámara de tu móvil.
-        </p>
-      </div>
-
-      <div className="max-w-[1080px] mx-auto p-6">
-        <h1 className="font-bold text-3xl">Dos maneras de Certificar</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-4">
-          <p className="w-full text-textMain font-medium mb-6">
-            Certify Web
-            <Link
-              href="/web"
-              className="w-full px-3 py-2 rounded-full flex gap-3 items-center
-                         text-primary border-2 border-primary hover:bg-primary/10"
-            >
-              <FaVideo />
-              WEB
-            </Link>
-          </p>
-          <p className="w-full text-textMain font-medium mb-6">
-            Certify App
-            <Link
-              href="/app"
-              className="w-full px-3 py-2 rounded-full flex gap-3 items-center
-                         text-primary border-2 border-primary hover:bg-primary/10"
-            >
-              <FaMobileAlt />
-              App
-            </Link>
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-[1080px] mx-auto p-8">
-        <h1 className="font-bold text-3xl">¿Qué hace?</h1>
-        <p className="text-textMain font-medium mb-6">
-          Sube una foto o PDF desde tu navegador y en segundos recibes un PDF
-          certificado con huella digital y sello de tiempo. Abre la app, toma la
-          foto o video y obtén el certificado con geo-referencia incorporada.
-        </p>
-        <p className="text-textMain font-medium mb-6">
-          Ideal para… Contratos firmados, inventarios, piezas creativas,
-          entregas de servicio. Inspecciones en campo, siniestros, pruebas de
-          cumplimiento, contenido periodístico. Resultado Documento PDF con
-          hash, timestamp y firma electrónica de Certify. Idem, más coordenadas
-          GPS y metadatos del dispositivo.
-        </p>
-        <img
-          className="w-full object-cover h-[250px]"
-          src="https://www.safestamper.com/public/img/photo-sign.jpg"
-          alt=""
+      <section className="w-full bg-primary text-white text-center py-10">
+        <p className="text-xl mb-2">Palabras enseñadas hoy</p>
+        <CountUp
+          start={0}
+          end={wordsToday}
+          duration={3}
+          separator=","
+          className="text-5xl md:text-6xl font-extrabold text-darkHero"
         />
-      </div>
-
-      <div className="max-w-[1080px] mx-auto p-8">
-        <h1 className="font-bold text-3xl">¿Por qué elegir Certify?</h1>
-        <p className="text-textMain font-medium mb-6">
-          Valor probatorio en minutos: cumple con estándares de validez jurídica
-          nacionales e internacionales. Integridad garantizada: usamos
-          criptografía avanzada para sellar cada archivo. Privacidad primero:
-          tus evidencias se guardan cifradas; sólo tú decides quién las ve.
-          Listo para tribunales: nuestros certificados incluyen sello de tiempo
-          confiable y firma electrónica reconocida.
-        </p>
-
-        <div className="max-w-[1080px] mx-auto p-8 mb-6">
-          <p className="text-textMain text-center font-medium md:text-5xl text-3xl">
-            Empieza Ahora
-          </p>
-          <h1 className="text-center text-xl font-bold pt-2">
-            Descargue la app para su dispositivo
-          </h1>
-
-          <div className="w-full grid grid-cols-2 gap-4">
-            <div className="box flex justify-center">
-              <div className="rounded bg-darkHero text-white inline-block">
-                <img
-                  className="w-70"
-                  src="https://www.safestamper.com/public/img/apps/es/android.png"
-                  alt="Descargar para Android"
-                />
+      </section>
+      {/* Cómo funciona */}
+      <section id="como-funciona" className="w-full bg-primaryLt/20 py-16">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 items-center">
+          {/* Tarjetas paso a paso */}
+          <div className="grid gap-6">
+            {[
+              ["📲", "Descarga la app", "Disponible gratis en Android y iOS."],
+              [
+                "🎯",
+                "Elige 20 palabras",
+                "Temática de animales, frutas o colores.",
+              ],
+              [
+                "⏱️",
+                "1 minuto de juego",
+                "Cada palabra aparece 5 s con audio divertido.",
+              ],
+              [
+                "🤗",
+                "Envía un ‘abrazo’",
+                "Dona $1 o $5 para motivar al peque.",
+              ],
+              [
+                "🎉",
+                "Recompensa mensual",
+                "La familia cobra su saldo y celebra.",
+              ],
+            ].map(([emoji, title, desc]) => (
+              <div
+                key={title}
+                className="flex items-start gap-4 bg-white rounded-2xl p-4 shadow-md"
+              >
+                <span className="text-3xl">{emoji}</span>
+                <div>
+                  <h3 className="font-bold text-lg text-primary">{title}</h3>
+                  <p className="text-textMain text-sm">{desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="box flex justify-center">
-              <div className="rounded bg-darkHero text-white inline-block">
-                <img
-                  className="w-70"
-                  src="https://www.safestamper.com/public/img/apps/es/ios.png"
-                  alt="Descargar para iOS"
-                />
-              </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Mock-up gigante */}
+          <img
+            src="/img/vaca.png"
+            alt="Pantalla de la app"
+            className="w-full max-w-sm mx-auto drop-shadow-2xl rounded-2xl"
+          />
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="max-w-[1180px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center px-6">
+          {/* Ilustración graciosa */}
+          <img
+            src="/img/padrino.png"
+            alt="Ilustración padrino feliz"
+            className="w-full max-w-xs mx-auto md:mx-0 animate-bounce-slow"
+          />
+
+          {/* Texto motivador */}
+          <div className="text-center md:text-left space-y-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-secondary leading-tight">
+              ¡Hazte <span className="text-primary">Padrino</span> y suma
+              sonrisas!
+            </h2>
+            <p className="text-textMain">
+              Con <strong>$5 </strong> financias <strong>toda la semana</strong>{" "}
+              de lecturas para un niño. Obtén tu <em>badge</em>, sal en nuestro
+              Hall of Fame y recibe un audio de agradecimiento ❤️.
+            </p>
+
+            <button
+              onClick={() => donate(5)}
+              disabled={loading}
+              className="inline-flex items-center gap-2 bg-cta text-darkHero font-bold px-10 py-4 rounded-full hover:opacity-90 shadow-lg text-lg"
+            >
+              🌟 Ser padrino ($5)
+            </button>
           </div>
         </div>
+      </section>
 
-        <p className="text-textMain font-medium mb-6">
-          Con Certify proteges tu trabajo, tu reputación y tus derechos, sin
-          importar dónde estés. ¡Certifica en línea o desde tu móvil y descansa
-          tranquilo!
-        </p>
-      </div>
-    </div>
+      {/* Descargas */}
+      <section id="descargar" className="w-full bg-primaryLt/10 py-16">
+        <div className="max-w-[1180px] mx-auto text-center px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Descarga gratis
+          </h2>
+          <p className="text-textMain mb-8">
+            Sólo 50&nbsp;segundos al día para cambiar vidas ⭐
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.tuapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/img/google-play-badge.svg"
+                alt="Disponible en Google Play"
+                width={180}
+                height={54}
+                className="h-12 sm:h-14 w-auto hover:scale-105 transition"
+              />
+            </a>
+
+            <a
+              href="https://apps.apple.com/app/id123456789"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/img/app-store-badge.svg"
+                alt="Disponible en la App Store"
+                width={180}
+                height={54}
+                className="h-12 sm:h-14 w-auto hover:scale-105 transition"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

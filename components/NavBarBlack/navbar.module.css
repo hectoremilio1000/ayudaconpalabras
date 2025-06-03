@@ -1,5 +1,5 @@
 .header-container {
-  background-color: transparent !important;
+  background-color: #002a6e !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
 }
 
 .header-container.sticky {
-  background-color: black !important;
+  background-color: #002a6e !important;
 }
 
 .header-container .row-qh {
@@ -90,7 +90,7 @@
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #002a6e !important;
     width: 0;
     padding: 0;
     transition: all ease-in 0.5s;

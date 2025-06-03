@@ -9,7 +9,7 @@
 }
 
 .header-container.sticky {
-  background-color: black !important;
+  background-color: #002a6e !important;
 }
 
 .header-container .row-qh {
@@ -36,7 +36,6 @@
   content: "";
 }
 
-
 .nav-link {
   display: block;
   text-decoration: none;
@@ -48,7 +47,6 @@
   transition: all 0.5s;
 }
 
-
 .header-icons {
   display: flex;
   align-items: center;
@@ -59,19 +57,13 @@
   color: #fff;
 }
 
-
 @media only screen and (min-width: 768px) {
-
-
-
-
   .toggle-icon {
     display: none;
   }
 }
 
 @media (max-width: 650px) {
-
   /* css de nabvar */
   .header-container {
     padding: 10px 20px !important;
@@ -91,10 +83,10 @@
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #002a6e;
     width: 0;
     padding: 0;
-    transition: all ease-in .5s;
+    transition: all ease-in 0.5s;
     visibility: hidden;
     overflow: hidden;
   }

@@ -10,7 +10,7 @@
 
 .header-container.sticky {
   /* darkHero – Charcoal  */
-  background-color: #0047ff !important;
+  background-color: #002a6e !important;
 }
 
 .header-container .row-qh {
@@ -86,7 +86,7 @@
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #ffffff; /* fondo claro */
+    background-color: #002a6e; /* fondo claro */
     width: 0;
     padding: 0;
     transition: all ease-in 0.5s;
@@ -103,7 +103,7 @@
 
   /* Links mobile */
   .linkswraper .nav-link {
-    color: #2e2e32; /* textMain – gris oscuro */
+    color: #fff; /* textMain – gris oscuro */
     padding: 20px 0 !important;
   }
 
