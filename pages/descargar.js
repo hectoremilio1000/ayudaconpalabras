@@ -14,24 +14,21 @@ export default function Descargar() {
 
       <section
         id="descargar"
-        className="w-full pt-44 md:pt-44 overflow-hidden pb-4"
+        // nav 56px + safe-area (iOS notch)
+        className="w-full pt-[calc(10rem+env(safe-area-inset-top))] md:pt-44 pb-4 overflow-hidden"
       >
         <div className="max-w-[1180px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-          {/* Ilustración — móvil primero, desktop derecha */}
+          {/* ------------ Ilustración ------------ */}
           <div className="relative flex justify-center md:justify-end order-1 md:order-2">
             <Image
               src="/img/download.png"
-              alt="Mascota feliz"
-              width={220}
-              height={220}
-              className="animate-float"
-            />
-            <Image
-              src="/img/mockup-learning-big.png"
-              alt="Mock-up de la app"
+              alt=""
               width={260}
               height={520}
-              className="absolute bottom-0 right-0 drop-shadow-2xl rounded-2xl translate-x-6 md:translate-x-8"
+              className="animate-float"
+              priority // se descarga antes
+              placeholder="blur" // opcional: quita el flash
+              blurDataURL="/img/blur-mockup.png" // tiny blur (10×10 px, 1 KB)
             />
           </div>
 
