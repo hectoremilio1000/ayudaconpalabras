@@ -24,6 +24,26 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        {/* Open Graph existentes */}
+        <meta
+          property="og:url"
+          content="https://ayudaconpalabras.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Suma Con Palabras" />
+        <meta
+          property="og:description"
+          content="Micro-donaciones para enseñar a leer a niñas y niños de zonas rurales."
+        />
+        <meta
+          property="og:image"
+          content="https://ayudaconpalabras.vercel.app/og/logo.png"
+        />
+        <meta property="og:image:alt" content="Logo de Suma Con Palabras" />
+        {/* Nueva línea para quitar la alerta */}
+        <meta property="fb:app_id" content="123456789012345" />
+      </Head>
       <AppContextProvider>
         <LayoutFinal>
           {/* <TikTokPixel pixelId={TIXTOK_PIXEL_ID} /> */}
