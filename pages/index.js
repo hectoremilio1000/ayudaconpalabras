@@ -131,7 +131,7 @@ export default function Home() {
         {/* imagen que quieres que aparezca */}
         <meta
           property="og:image"
-          content="https://ayudaconpalabras.vercel.app/og/logo.png"
+          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=2"
         />
         <meta property="og:image:width" content="600" />
         <meta property="og:image:height" content="314" />
@@ -139,7 +139,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
-          content="https://ayudaconpalabras.vercel.app/og/logo.png"
+          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=2"
         />
       </Head>
 

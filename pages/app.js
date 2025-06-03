@@ -7,24 +7,10 @@ const app = () => {
   return (
     <div className="w-full">
       <Head>
-        <title>Certify | App </title>
-        <link rel="icon" href="../favicon.png" />
+        <title>Suma con palabras</title>
         <meta
           name="description"
-          content="Certify Web es un servicio para certificar la publicación de un
-          contenido en Internet indicando URL, fecha y hora."
-        />
-        <meta property="og:title" content="Certify Web" />
-        <meta
-          property="og:description"
-          content="Certify Web es un servicio para certificar la publicación de un
-          contenido en Internet indicando URL, fecha y hora."
-        />
-        <meta property="og:url" content="https://www.growthsuite.com/" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://imagenesrutalab.s3.amazonaws.com/impulsoRestaurantero/logo/logoSoloImpulsoRestaurantero.png"
+          content="Micro-donaciones para enseñar a leer a niñas y niños de zonas rurales."
         />
       </Head>
 

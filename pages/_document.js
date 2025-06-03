@@ -5,9 +5,10 @@ export default function Document() {
   return (
     <Html lang="es">
       <Head>
-        {/* –––––– SEO / OG –––––– */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+        {/* ——— OPEN GRAPH / WHATSAPP ——— */}
         <meta
           property="og:url"
           content="https://ayudaconpalabras.vercel.app/"
@@ -19,16 +20,18 @@ export default function Document() {
           property="og:description"
           content="Micro-donaciones para enseñar a leer a niñas y niños de zonas rurales."
         />
-        {/* Imagen 1200×630 px – mínimo 600×315 según Meta */} {/* 1 */}
+
         <meta
           property="og:image"
-          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=1"
+          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=2"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        {/* Opcional – solo si quieres estadísticas en Facebook Insights */}
+
+        {/* Opcional — solo para Insights */}
         <meta property="fb:app_id" content="123456789012345" />
-        {/* Twitter (ya que estamos) */}
+
+        {/* Twitter, opcional */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Suma Con Palabras" />
         <meta
@@ -37,7 +40,7 @@ export default function Document() {
         />
         <meta
           name="twitter:image"
-          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=1"
+          content="https://ayudaconpalabras.vercel.app/og/logo.png?v=2"
         />
       </Head>
       <body>
